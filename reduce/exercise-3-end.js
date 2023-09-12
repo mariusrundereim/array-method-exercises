@@ -20,7 +20,7 @@ const teams = [
   {
     name: "Hawks",
     score: 60,
-    isWinner: true,
+    isWinner: false,
   },
   {
     name: "Dolphins",
@@ -30,23 +30,48 @@ const teams = [
   {
     name: "Falcons",
     score: 90,
+    isWinner: true,
+  },
+  {
+    name: "Turtles",
+    score: 5,
     isWinner: false,
   },
   {
-    name: "Bears",
-    score: 90,
+    name: "Seaguls",
+    score: 190,
+    isWinner: true,
+  },
+  {
+    name: "Penguins",
+    score: 904,
+    isWinner: true,
+  },
+  {
+    name: "Foxes",
+    score: 45,
     isWinner: false,
   },
 ];
 
 const initialValue = {};
-const winningTeams = teams.reduce((total, teams) => {
-  //total += teams;
+// const winningTeams = teams.reduce((total, winningTeam) => {
+//   total += teams[winningTeam.toLowercase()];
 
-  if (isWinner === true) {
-    return true;
+//   if (isWinner === true) {
+//     return true;
+//   }
+//   return isWinner;
+// }, initialValue);
+
+const cnFunc = (acc, team) => {
+  if (team.isWinner) {
+    acc[team.name.toLowerCase()] = team.score;
   }
-  return isWinner;
-}, initialValue);
+  console.log(acc);
+  return acc;
+};
 
-console.log(winningTeams);
+const winningTeams = teams.reduce(cnFunc, initialValue);
+
+// console.log(winningTeams);
